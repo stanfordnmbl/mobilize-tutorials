@@ -4,5 +4,5 @@ Learn more about the Mobilize Center (https://mobilize.stanford.edu), a Biomedic
 
 ------------------------------------------------------------------------------------------------------
 
-<b>Pose Estimation for Biomechanics</b> - This tutorial demonstrates how to use the OpenPose open-source software to extract knee flexion curves and gait cycles form a video of a
+<b>Pose Estimation for Biomechanics</b> - This tutorial demonstrates how to use the OpenPose open-source software to extract knee flexion curves and gait cycles from a video of a
 subject walking.
