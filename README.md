@@ -6,3 +6,5 @@ Learn more about the Mobilize Center (https://mobilize.stanford.edu), a Biomedic
 
 <b>Pose Estimation for Biomechanics</b> - This tutorial demonstrates how to use the OpenPose open-source software to extract knee flexion curves and gait cycles from a video of a
 subject walking.
+
+<b>Energy Expenditure During Exercise</b> - This tutorial demonstrates how to estimate energy expenditure during various exercises from inertial measurement units (IMUs) worn on the leg. 
