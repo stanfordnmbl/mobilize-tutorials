@@ -8,3 +8,5 @@ Learn more about the Mobilize Center (https://mobilize.stanford.edu), a Biomedic
 subject walking.
 
 <b>Energy Expenditure During Exercise</b> - This tutorial demonstrates how to estimate energy expenditure during various exercises from inertial measurement units (IMUs) worn on the leg. 
+
+<b>OpenCap Visualization Notebook</b> - This tutorial demonstrates how to perform kinematic analyses for data collected with OpenCap. The Google Colab notebook can be found in the [OpenCap Processing Github repository](https://github.com/stanfordnmbl/opencap-processing). 
