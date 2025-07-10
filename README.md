@@ -10,3 +10,8 @@ subject walking.
 <b>Energy Expenditure During Exercise</b> - This tutorial demonstrates how to estimate energy expenditure during various exercises from inertial measurement units (IMUs) worn on the leg. 
 
 <b>OpenCap Visualization Notebook</b> - This tutorial demonstrates how to perform kinematic analyses for data collected with OpenCap. The [Google Colab notebook](https://github.com/stanfordnmbl/opencap-processing/blob/main/example.ipynb) can be found in the [OpenCap Processing Github repository](https://github.com/stanfordnmbl/opencap-processing). 
+
+<b>Personalizing a Computational Upper Body Model</b> - This tutorial demonstrates how to personalize a computational upper body model using five calibration pose measurements. 
+
+<b>Movement Analysis using Single and Multiview Video</b> - This tutorial demonstrates how to calculate kinematics from a sample monocular using an end-to-end optimization based approach.
+
