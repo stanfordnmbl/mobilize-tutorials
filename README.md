@@ -15,3 +15,4 @@ subject walking.
 
 <b>Movement Analysis using Single and Multiview Video</b> - This tutorial demonstrates how to calculate kinematics from a sample monocular using an end-to-end optimization based approach.
 
+<b>Neuromusculoskeletal Modeling (NMSM) Pipeline </b> This folder contains the files for the tutorial that demonstrates how to use the NMSM Pipeline to to perform Model Personalization and Treatment Optimization steps to predict how a former collegiate soccer player should modify his soccer kicking motion to make the ball go farther.

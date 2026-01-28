@@ -1,0 +1,75 @@
+<NMSMPipelineDocument Version="1.5.1">
+	<JointModelPersonalizationTool name="default">
+		<!--Directory for input files.-->
+		<input_directory>.</input_directory>
+		<!--Name of file containing input model, if using the application this has no effect as current model is used.-->
+		<input_model_file>Kicking_Model_Scaled.osim</input_model_file>
+		<!--Name of file containing output model after tool executaion.-->
+		<output_model_file>Kicking_Model_jmp.osim</output_model_file>
+		<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+		<allowable_error>0.005</allowable_error>
+		<!--List of tasks to be completed by the tool, each Task is a separate optimization.-->
+		<JMPTaskList>
+			<JMPTask name="RightKnee">
+				<!--Indicate whether the task is enabled or not.-->
+				<is_enabled>true</is_enabled>
+				<!--Order of the tasks to be completed-->
+				<index>1</index>
+				<!--Name of marker file with required data for this JointPersonalizationTask.-->
+				<marker_file_name>drive_kick1_markers.trc</marker_file_name>
+				<!--Space separated list containing marker names to be used in this task.-->
+				<marker_names>R_ASIS L_ASIS Sacral R_Thigh_Superior R_Thigh_Inferior R_Thigh_Lateral R_Shank_Superior R_Shank_Inferior R_Shank_Lateral</marker_names>
+				<!--Time range from marker file to be used to optimize joint personalization.-->
+				<time_range>0 0.75</time_range>
+				<!--Joints that will be optimized in this task.-->
+				<JMPJointSet>
+					<JMPJoint name="knee_r">
+						<!--Joint Parent Frame.-->
+						<parent_frame_transformation>
+							<!--Three boolean values (separated by spaces) for if the joint translation parameter is to be optimized.-->
+							<translation>false false false</translation>
+							<!--Three boolean values (separated by spaces) for if the joint orientation parameter is to be optimized.-->
+							<orientation>true true false</orientation>
+							<!--Translation bounds set the upper and lower limits of the search range around the initial value.-->
+							<translation_bounds>0.05</translation_bounds>
+							<!--Orientation bounds set the upper and lower limits of the search range around the initial value.-->
+							<orientation_bounds>0.5</orientation_bounds>
+						</parent_frame_transformation>
+						<!--Joint Child Frame.-->
+						<child_frame_transformation>
+							<!--Three boolean values (separated by spaces) for if the joint translation parameter is to be optimized.-->
+							<translation>false false false</translation>
+							<!--Three boolean values (separated by spaces) for if the joint orientation parameter is to be optimized.-->
+							<orientation>true true false</orientation>
+							<!--Translation bounds set the upper and lower limits of the search range around the initial value.-->
+							<translation_bounds>0.05</translation_bounds>
+							<!--Orientation bounds set the upper and lower limits of the search range around the initial value.-->
+							<orientation_bounds>0.5</orientation_bounds>
+						</child_frame_transformation>
+					</JMPJoint>
+				</JMPJointSet>
+				<!--Bodies that will be optimized in this task.-->
+				<JMPBodySet>
+					<JMPBody name="femur_r">
+						<!--Boolean value for whether the body, with task name, is to be scaled.-->
+						<scale_body>false</scale_body>
+						<!--Three boolean values (separated by spaces) for which axes the markers should be free to move in (x, y, z) order.-->
+						<move_markers>true true false</move_markers>
+					</JMPBody>
+				</JMPBodySet>
+			</JMPTask>
+		</JMPTaskList>
+		<!--*Optional* The accuracy of the IKSolver solution in absolute terms. Default is 1e-5. It determines the number of significant digits to which the solution can be trusted.-->
+		<accuracy>1e-6</accuracy>
+		<!--*Optional* The minimum step of the least squares algorithm. Default is 1e-4  which means the solution will be optimized to 0.1 mm resolution. -->
+		<diff_min_change>0.001</diff_min_change>
+		<!--*Optional* The optimality tolerance determines when the lsqnonlin algorithm stops. The larger it is, the earlier the algorithm stops, but with lower accuracy.-->
+		<optimality_tolerance>1e-05</optimality_tolerance>
+		<!--*Optional* The function tolerance determines when the lsqnonlin algorithm stops. The larger it is, the earlier the algorithm stops, but with lower accuracy.-->
+		<function_tolerance>1e-05</function_tolerance>
+		<!--*Optional* The step tolerance determines when the lsqnonlin algorithm stops. The larger it is, the earlier the algorithm stops, but with lower accuracy.-->
+		<step_tolerance>1e-05</step_tolerance>
+		<!--*Optional* The number of allowed iterations for the lsqnonlin, setting this lower can help cancel an optimization that won't converge.-->
+		<max_function_evaluations>300</max_function_evaluations>
+	</JointModelPersonalizationTool>
+</NMSMPipelineDocument>

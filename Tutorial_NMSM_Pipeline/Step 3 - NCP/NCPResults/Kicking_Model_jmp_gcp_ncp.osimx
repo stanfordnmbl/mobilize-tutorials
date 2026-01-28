@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NMSMPipelineDocument Version="0.1.0">
+   <OsimxModel name="Kicking_Model_jmp_gcp_ncp">
+      <!--File name of associated .osim file-->
+      <associated_osim_model>Kicking_Model_jmp.osim</associated_osim_model>
+      <RCNLMuscleSet>
+         <RCNLMuscle name="bflh_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1952</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.2133</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="bfsh_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1751</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.0595</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="gasmed_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1773</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.2931</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="glmax2_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1958</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.0618</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="iliacus_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1401</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.1009</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="recfem_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1765</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.3915</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="soleus_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1392</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.2124</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="tibant_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.107</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.232</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="vasmed_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1703</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.1607</tendon_slack_length>
+         </RCNLMuscle>
+      </RCNLMuscleSet>
+      <RCNLContactSurfaceSet>
+         <RCNLContactSurface>
+            <!--Flag indicating whether foot model should be mirrored-->
+            <is_left_foot>true</is_left_foot>
+            <!--Speed of treadmill belt for recorded motion. Set to 0 if not applicable-->
+            <belt_speed>0</belt_speed>
+            <!--Names of the force columns in the grf file, ordered X, Y, Z-->
+            <force_columns>ground_force_1_vx ground_force_1_vy ground_force_1_vz</force_columns>
+            <!--Names of the moment columns in the grf file, ordered X, Y, Z-->
+            <moment_columns>ground_moment_1_mx ground_moment_1_my ground_moment_1_mz</moment_columns>
+            <!--Names of the electrical center columns in the grf file, ordered X, Y, Z-->
+            <electrical_center_columns>ground_force_1_px ground_force_1_py ground_force_1_pz</electrical_center_columns>
+            <!--Name of the hindfoot body in the model file-->
+            <hindfoot_body>calcn_l</hindfoot_body>
+            <!--Names of the markers used to define the foot area-->
+            <toe_marker>L_Toe</toe_marker>
+            <medial_marker>L_Toe_Medial</medial_marker>
+            <lateral_marker>L_Toe_Lateral</lateral_marker>
+            <heel_marker>L_Heel</heel_marker>
+            <midfoot_superior_marker>L_Midfoot_Superior</midfoot_superior_marker>
+            <!--The resting spring length of the surface-->
+            <resting_spring_length>0.0066373</resting_spring_length>
+            <!--The dynamic friction coefficient of the surface-->
+            <dynamic_friction_coefficient>0.30397</dynamic_friction_coefficient>
+            <!--The viscous friction coefficient of the surface-->
+            <viscous_friction_coefficient>0</viscous_friction_coefficient>
+            <!--The damping factor of the surface-->
+            <damping_factor>0.46557</damping_factor>
+            <!--The latching velocity of the surface-->
+            <latching_velocity>0.1</latching_velocity>
+            <!--The set of springs for the contact surface-->
+            <GCPSpringSet>
+               <GCPSpring name="spring_marker_1">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.14372634744155 -0.0221075830997055 0.04412780815516</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>11889.5969247778</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_2">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.186281571778981 -0.0221075830997055 0.0421842074447304</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>12390.2892117578</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_3">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>toes_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0464919460624094 -0.0221075830997055 0.0413420185802647</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>11817.7966352742</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_4">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.014111662374955 -0.0221075830997055 0.00728490433332827</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>21363.6528672235</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_5">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0566668867123863 -0.0221075830997055 0.0053413036228987</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>20620.3710923831</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_6">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0992221110498175 -0.0221075830997055 0.00339770291246913</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>14728.6191046258</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_7">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.141777335387249 -0.0221075830997055 0.00145410220203955</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>12226.9896009396</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_8">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>toes_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.00198770967067691 -0.0221075830997055 0.000611913337573756</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>13610.8210009177</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_9">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>toes_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0445429340081081 -0.0221075830997055 -0.00133168737285582</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>19387.4455641673</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_10">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0121626503206538 -0.0221075830997055 -0.0353888016197922</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>11664.0795307167</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_11">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.054717874658085 -0.0221075830997055 -0.0373324023302218</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>12194.9552117178</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_12">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0972730989955162 -0.0221075830997055 -0.0392760030406513</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>20036.5916177663</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_13">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>calcn_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.139828323332947 -0.0221075830997055 -0.0412196037510809</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>21006.1780148657</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_14">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>toes_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>3.86976163756492e-05 -0.0221075830997055 -0.0420617926155467</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>21174.2784783136</spring_constant>
+               </GCPSpring>
+               <GCPSpring name="spring_marker_15">
+                  <!--The body that the spring is attached to-->
+                  <parent_body>toes_l</parent_body>
+                  <!--The location of the spring in the body it is attached to-->
+                  <location>0.0425939219538069 -0.0221075830997055 -0.0440053933259763</location>
+                  <!--The modeled spring constant for the spring-->
+                  <spring_constant>20399.8635623127</spring_constant>
+               </GCPSpring>
+            </GCPSpringSet>
+         </RCNLContactSurface>
+      </RCNLContactSurfaceSet>
+      <!--The set of synergies from NCP to find the values in this osimx file-->
+      <RCNLSynergySet>
+         <RCNLSynergy>
+            <!--The name of the muscle group associated with this synergy-->
+            <muscle_group_name>RightLeg</muscle_group_name>
+            <!--The number of synergies used by this synergy group-->
+            <num_synergies>4</num_synergies>
+         </RCNLSynergy>
+      </RCNLSynergySet>
+   </OsimxModel>
+</NMSMPipelineDocument>

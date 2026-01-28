@@ -1,0 +1,163 @@
+<NMSMPipelineDocument Version="1.5.1">
+	<DesignOptimizationTool name="default">
+		<!--Directory used for writing results.-->
+		<results_directory>DOResultsUserCost</results_directory>
+		<!--Directory for optimizer initial guess.-->
+		<initial_guess_directory>VOResults</initial_guess_directory>
+		<!--Directory for files for the optimizer to track.-->
+		<tracked_quantities_directory>VOResults</tracked_quantities_directory>
+		<!--Name of the input model file (.osim) to use.-->
+		<input_model_file>Kicking_Model_jmp.osim</input_model_file>
+		<!--Name of the osimx model file.-->
+		<input_osimx_file>Kicking_Model_jmp_ncp.osimx</input_osimx_file>
+		<!--Name of the optimal control solver settings file.-->
+		<optimal_control_solver_settings_file>gpopsSettings.xml</optimal_control_solver_settings_file>
+		<!--Name, excluding file type (.sto, .mot, etc), of the trial-->
+		<trial_name>drive_kick1</trial_name>
+		<load_surrogate_model>true</load_surrogate_model>
+		<!--Space separated list of coordinates to be considered GPOPS2 states. Not including a coordinate prescribes it.-->
+		<states_coordinate_list>hip_flexion_r knee_angle_r ankle_angle_r</states_coordinate_list>
+		<!--*Optional* Default is 2.-->
+		<joint_position_range_scale_factor>1.5</joint_position_range_scale_factor>
+		<!--*Optional* Default is 1.5.-->
+		<joint_velocity_range_scale_factor>1.25</joint_velocity_range_scale_factor>
+		<!--*Optional* Default is 1.-->
+		<joint_acceleration_range_scale_factor>1</joint_acceleration_range_scale_factor>
+		<!--Set of synergy controls for GPOPS2.-->
+		<RCNLSynergyController>
+			<!--Boolean (true, false) indicating if synergy vectors should be optimized.-->
+			<optimize_synergy_vectors>false</optimize_synergy_vectors>
+			<!--*Optional* Method to normalize synergy vectors. Can be 'sum' or 'magnitude'-->
+			<synergy_vector_normalization_method>magnitude</synergy_vector_normalization_method>
+			<!--*Optional* Numerical value to normalize the synergy vectors to.-->
+			<synergy_vector_normalization_value>0.5</synergy_vector_normalization_value>
+			<maximum_allowable_synergy_activation>3</maximum_allowable_synergy_activation>
+			<!--Space separated list containing the coordinates controlled by the synergy controller.-->
+			<surrogate_model_coordinate_list>hip_flexion_r hip_adduction_r hip_rotation_r knee_angle_r ankle_angle_r subtalar_angle_r</surrogate_model_coordinate_list>
+			<!--Directory to read the surrogate model from.-->
+			<surrogate_model_data_directory>surrogateData</surrogate_model_data_directory>
+		</RCNLSynergyController>
+		<!--Set of cost terms used for this optimization. For a full list of cost terms, see documentation at nmsm.rice.edu.-->
+		<RCNLCostTermSet>
+			<RCNLCostTerm name="Synergy_Activation_Tracking">
+				<!--Indicate whether the term is enabled or not. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of cost term.-->
+				<type>controller_tracking</type>
+				<!--Space separated list containing controllers to be included in this cost term.-->
+				<controller_list>RightLeg_1 RightLeg_2 RightLeg_3 RightLeg_4</controller_list>
+				<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+				<max_allowable_error>1</max_allowable_error>
+			</RCNLCostTerm>
+			<RCNLCostTerm name="User_Defined_Cost_Term" >
+				<!--Indicate whether the term is enabled or not. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of cost term.-->
+				<type>user_defined</type>
+				<!--Name of Matlab function containing cost term implementation.-->
+				<function_name>footSpeedCost</function_name>
+				<!--Type of cost term (discrete or continuous).-->
+				<cost_term_type>discrete</cost_term_type>
+				<!--Required cost term input.-->
+				<marker_name>R_Toe</marker_name>
+				<!--Required cost term input.-->
+				<target_speed>14.35</target_speed>
+			</RCNLCostTerm>
+		</RCNLCostTermSet>
+		<!--Set of constraint terms applied to this optimization. For a full list of constraint terms, see documentation at nmsm.rice.edu.-->
+		<RCNLConstraintTermSet>
+			<RCNLConstraintTerm name="Kinetic_Consistency">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of constraint term.-->
+				<type>kinetic_consistency</type>
+				<!--Space separated list containing model loads to be included in this cost term.-->
+				<load_list>hip_flexion_r_moment knee_angle_r_moment ankle_angle_r_moment</load_list>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>0.1</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>-0.1</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="Initial_Generalized_Coordinate_Deviation">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of constraint term.-->
+				<type>initial_generalized_coordinate_deviation</type>
+				<!--Space separated list containing model coordinates to be included in this cost term.-->
+				<coordinate_list>hip_flexion_r knee_angle_r ankle_angle_r</coordinate_list>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>0.0175</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>-0.0175</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="Initial_Generalized_Speed_Deviation">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of constraint term.-->
+				<type>initial_generalized_speed_deviation</type>
+				<!--Space separated list containing model coordinates to be included in this cost term.-->
+				<coordinate_list>hip_flexion_r knee_angle_r ankle_angle_r</coordinate_list>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>0.175</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>-0.175</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="Final_Toe_Marker_Position_Deviation">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of constraint term.-->
+				<type>final_marker_position_deviation</type>
+				<!--Space separated list containing markers to be included in this cost term.-->
+				<marker_list>R_Toe</marker_list>
+				<!--Space separated list containing axes (x y z) of the cost term.-->
+				<axes>x y</axes>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>0.001</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>-0.001</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="Final_Foot_Orientation_Deviation">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of constraint term.-->
+				<type>final_body_orientation_deviation</type>
+				<!--Space separated list containing markers to be included in this cost term.-->
+				<body_list>calcn_r</body_list>
+				<!--Space separated list containing axes (x y z) of the cost term.-->
+				<axes>z</axes>
+				<!--Rotation sequence used to define the body orientation.-->
+				<sequence>zxy</sequence>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>0.0175</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>-0.0175</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="Final_Toe_Marker_Velocity_Value">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>false</is_enabled>
+				<!--Type of constraint term.-->
+				<type>final_marker_velocity_value</type>
+				<!--Space separated list containing markers to be included in this cost term.-->
+				<marker_list>R_Toe</marker_list>
+				<!--Space separated list containing axes ( y z) of the cost term.-->
+				<axes>x</axes>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>14.4</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>14.3</min_error>
+			</RCNLConstraintTerm>
+			<RCNLConstraintTerm name="Final_Generalized_Speed_Deviation">
+				<!--Flag (true, false) indicating whether this contraint term is enabled. Default is false.-->
+				<is_enabled>true</is_enabled>
+				<!--Type of constraint term.-->
+				<type>final_generalized_speed_deviation</type>
+				<!--Space separated list containing model coordinates to be included in this cost term.-->
+				<coordinate_list>ankle_angle_r</coordinate_list>
+				<!--Maximum error allowed by this constraint term.-->
+				<max_error>0.175</max_error>
+				<!--Minimum error allowed by this constraint term.-->
+				<min_error>-0.175</min_error>
+			</RCNLConstraintTerm>
+		</RCNLConstraintTermSet>
+	</DesignOptimizationTool>
+</NMSMPipelineDocument>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NMSMPipelineDocument Version="0.1.0">
+   <OsimxModel name="Kicking_Model_jmp_ncp">
+      <!--File name of associated .osim file-->
+      <associated_osim_model>Kicking_Model_jmp.osim</associated_osim_model>
+      <RCNLMuscleSet>
+         <RCNLMuscle name="bflh_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1952</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.2133</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="bfsh_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1751</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.0595</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="gasmed_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1773</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.2931</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="glmax2_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1958</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.0618</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="iliacus_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1401</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.1009</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="recfem_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1765</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.3915</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="soleus_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1392</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.2124</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="tibant_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.107</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.232</tendon_slack_length>
+         </RCNLMuscle>
+         <RCNLMuscle name="vasmed_r">
+            <!--Optimized optimal fiber length-->
+            <optimal_fiber_length>0.1703</optimal_fiber_length>
+            <!--Optimized tendon slack length-->
+            <tendon_slack_length>0.1607</tendon_slack_length>
+         </RCNLMuscle>
+      </RCNLMuscleSet>
+      <!--The set of synergies from NCP to find the values in this osimx file-->
+      <RCNLSynergySet>
+         <RCNLSynergy>
+            <!--The name of the muscle group associated with this synergy-->
+            <muscle_group_name>RightLeg</muscle_group_name>
+            <!--The number of synergies used by this synergy group-->
+            <num_synergies>4</num_synergies>
+         </RCNLSynergy>
+      </RCNLSynergySet>
+   </OsimxModel>
+</NMSMPipelineDocument>

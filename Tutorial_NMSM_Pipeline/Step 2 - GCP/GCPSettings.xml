@@ -1,0 +1,319 @@
+<NMSMPipelineDocument Version="1.5.1">
+	<GroundContactPersonalizationTool name="default">
+		<!--Name of the directory where results are written. Be default this is the directory in which the setup file is be  executed.-->
+		<results_directory>GCPResults</results_directory>
+		<!--Name of file containing input model, if using the application this has no effect as current model is used.-->
+		<input_model_file>Walking_Model_jmp.osim</input_model_file>
+		<!--Name of input .osimx file to append results. Leave empty if an .osimx file has not been written for this model yet.-->
+		<input_osimx_file/>
+		<!--Name of the input motion file (.mot or .sto) to use.-->
+		<input_motion_file>Trial12_Gait_IK_results_filtered.mot</input_motion_file>
+		<!--Name of the input ground reaction forces file (.mot or .sto) to use.-->
+		<input_grf_file>Trial12_Gait_forces_filtered.mot</input_grf_file>
+		<!--Lowpass filter cutoff frequency for kinematic B-splines. A lower frequency may be less precise but converge more quickly.-->
+		<kinematics_filter_cutoff>10</kinematics_filter_cutoff>
+		<!--Flag indicating whether the initial resting spring length will be calibrated before optimization rounds. Recommended true unless the chosen initial value is desired.-->
+		<initialize_resting_spring_length>true</initialize_resting_spring_length>
+		<!--Number of spring markers in width of spring marker grid. Default is 5.-->
+		<grid_width>3</grid_width>
+		<!--Number of spring markers in height of spring marker grid. Default is 15.-->
+		<grid_height>8</grid_height>
+		<!--List of Contact Surfaces, each specified as GCPContactSurface.-->
+		<GCPContactSurfaceSet>
+			<GCPContactSurface name="LeftFoot">
+				<!--Indicate whether the the foot will be personalized or not.-->
+				<is_enabled>true</is_enabled>
+				<!--Flag indicating whether foot model should be mirrored.-->
+				<is_left_foot>true</is_left_foot>
+				<!--Start time for right side gait cycles in motion and ground reaction force files.-->
+				<start_time>1.5</start_time>
+				<!--End time for motion and ground reaction force files.-->
+				<end_time>2.56</end_time>
+				<!--Speed of treadmill belt for recorded motion. Set to 0 if not applicable.-->
+				<belt_speed>1.2</belt_speed>
+				<!--Names of the force columns in the grf file, ordered X, Y, Z.-->
+				<force_columns>ground_force_1_vx ground_force_1_vy ground_force_1_vz</force_columns>
+				<!--Names of the moment columns in the grf file, ordered X, Y, Z.-->
+				<moment_columns>ground_moment_1_mx ground_moment_1_my ground_moment_1_mz</moment_columns>
+				<!--Names of the electrical center columns in the grf file, ordered X, Y, Z.-->
+				<electrical_center_columns>ground_force_1_px ground_force_1_py ground_force_1_pz</electrical_center_columns>
+				<!--Name of the hindfoot body in the model file.-->
+				<hindfoot_body>calcn_l</hindfoot_body>
+				<!--Name of the marker used to define toe.-->
+				<toe_marker>L_Toe</toe_marker>
+				<!--Name of the marker used to define medial side.-->
+				<medial_marker>L_Toe_Medial</medial_marker>
+				<!--Name of the marker used to define lateral side.-->
+				<lateral_marker>L_Toe_Lateral</lateral_marker>
+				<!--Name of the marker used to define heel.-->
+				<heel_marker>L_Heel</heel_marker>
+				<!--Name of midfoot superior marker used to define ground reaction moments.-->
+				<midfoot_superior_marker>L_Midfoot_Superior</midfoot_superior_marker>
+			</GCPContactSurface>
+		</GCPContactSurfaceSet>
+		<!--Task list defining rounds of GCP optimization.-->
+		<GCPTaskList>
+			<GCPTask>
+				<!--Indicate whether the task is enabled or not.-->
+				<is_enabled>true</is_enabled>
+				<!--Index indicates the order of the tasks. The task with the smallest index is completed first.-->
+				<index>1</index>
+				<!--Stiffness values specific to each point of contact.-->
+				<springConstants>true</springConstants>
+				<!--Damping factor for linear damping of vertical force.-->
+				<dampingFactor>true</dampingFactor>
+				<!--Dynamic friction coefficient used in calculating horizontal ground reaction forces.-->
+				<dynamicFrictionCoefficient>false</dynamicFrictionCoefficient>
+				<!--Viscous friction coefficient used in calculating horizontal ground reaction forces.-->
+				<viscousFrictionCoefficient>false</viscousFrictionCoefficient>
+				<!--Height value at which linear springs exert force. Only recommended when primarily calibrating vertical force.-->
+				<restingSpringLength>true</restingSpringLength>
+				<!--Coefficients allowing for adjustments to kinematics during optimization.-->
+				<kinematicsBSplineCoefficients>true</kinematicsBSplineCoefficients>
+				<!--Adjust the forceplate electrical centers in the x direction-->
+				<electricalCenterX>false</electricalCenterX>
+				<!--Adjust the forceplate electrical centers in the y direction-->
+				<electricalCenterY>false</electricalCenterY>
+				<!--Adjust the forceplate electrical centers in the z direction-->
+				<electricalCenterZ>false</electricalCenterZ>
+				<!--Rotate the forceplate in the y direction-->
+				<forcePlateRotation>false</forcePlateRotation>
+				<!--Standard deviation of the gaussian distribution used to generate the neighbor spring constant term.-->
+				<neighborStandardDeviation>0.2</neighborStandardDeviation>
+				<!--Cost term set for the GCPTask.-->
+				<RCNLCostTermSet>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>marker_position</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.002</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>rotation</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.005</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>vertical_grf</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>5</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>horizontal_grf</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>20</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>ground_reaction_moment</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>10</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>neighbor_spring_constant</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>5000</max_allowable_error>
+					</RCNLCostTerm>
+				</RCNLCostTermSet>
+			</GCPTask>
+			<GCPTask>
+				<!--Indicate whether the task is enabled or not.-->
+				<is_enabled>true</is_enabled>
+				<!--Index indicates the order of the tasks. The task with the smallest index is completed first.-->
+				<index>2</index>
+				<!--Stiffness values specific to each point of contact.-->
+				<springConstants>true</springConstants>
+				<!--Damping factor for linear damping of vertical force.-->
+				<dampingFactor>true</dampingFactor>
+				<!--Dynamic friction coefficient used in calculating horizontal ground reaction forces.-->
+				<dynamicFrictionCoefficient>true</dynamicFrictionCoefficient>
+				<!--Viscous friction coefficient used in calculating horizontal ground reaction forces.-->
+				<viscousFrictionCoefficient>false</viscousFrictionCoefficient>
+				<!--Height value at which linear springs exert force. Only recommended when primarily calibrating vertical force.-->
+				<restingSpringLength>false</restingSpringLength>
+				<!--Coefficients allowing for adjustments to kinematics during optimization.-->
+				<kinematicsBSplineCoefficients>true</kinematicsBSplineCoefficients>
+				<!--Adjust the forceplate electrical centers in the x direction-->
+				<electricalCenterX>false</electricalCenterX>
+				<!--Adjust the forceplate electrical centers in the y direction-->
+				<electricalCenterY>false</electricalCenterY>
+				<!--Adjust the forceplate electrical centers in the z direction-->
+				<electricalCenterZ>false</electricalCenterZ>
+				<!--Rotate the forceplate in the y direction-->
+				<forcePlateRotation>false</forcePlateRotation>
+				<!--Standard deviation of the gaussian distribution used to generate the neighbor spring constant term.-->
+				<neighborStandardDeviation>0.2</neighborStandardDeviation>
+				<!--Cost term set for the GCPTask.-->
+				<RCNLCostTermSet>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>marker_position</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.002</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>rotation</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.005</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>vertical_grf</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>5</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>horizontal_grf</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>2</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>ground_reaction_moment</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>10</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>neighbor_spring_constant</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>5000</max_allowable_error>
+					</RCNLCostTerm>
+				</RCNLCostTermSet>
+			</GCPTask>
+			<GCPTask>
+				<!--Indicate whether the task is enabled or not.-->
+				<is_enabled>true</is_enabled>
+				<!--Index indicates the order of the tasks. The task with the smallest index is completed first.-->
+				<index>3</index>
+				<!--Stiffness values specific to each point of contact.-->
+				<springConstants>true</springConstants>
+				<!--Damping factor for linear damping of vertical force.-->
+				<dampingFactor>true</dampingFactor>
+				<!--Dynamic friction coefficient used in calculating horizontal ground reaction forces.-->
+				<dynamicFrictionCoefficient>true</dynamicFrictionCoefficient>
+				<!--Viscous friction coefficient used in calculating horizontal ground reaction forces.-->
+				<viscousFrictionCoefficient>false</viscousFrictionCoefficient>
+				<!--Height value at which linear springs exert force. Only recommended when primarily calibrating vertical force.-->
+				<restingSpringLength>false</restingSpringLength>
+				<!--Coefficients allowing for adjustments to kinematics during optimization.-->
+				<kinematicsBSplineCoefficients>true</kinematicsBSplineCoefficients>
+				<!--Adjust the forceplate electrical centers in the x direction-->
+				<electricalCenterX>true</electricalCenterX>
+				<!--Adjust the forceplate electrical centers in the y direction-->
+				<electricalCenterY>false</electricalCenterY>
+				<!--Adjust the forceplate electrical centers in the z direction-->
+				<electricalCenterZ>true</electricalCenterZ>
+				<!--Rotate the forceplate in the y direction-->
+				<forcePlateRotation>false</forcePlateRotation>
+				<!--Standard deviation of the gaussian distribution used to generate the neighbor spring constant term.-->
+				<neighborStandardDeviation>0.2</neighborStandardDeviation>
+				<!--Cost term set for the GCPTask.-->
+				<RCNLCostTermSet>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>marker_position</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.002</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>rotation</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.005</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>vertical_grf</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>5</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>horizontal_grf</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>2</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>ground_reaction_moment</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>0.5</max_allowable_error>
+					</RCNLCostTerm>
+					<RCNLCostTerm>
+						<!--Indicate whether the term is enabled or not. Default is false.-->
+						<is_enabled>true</is_enabled>
+						<!--Type of cost term.-->
+						<type>neighbor_spring_constant</type>
+						<!--The accuracy to compare against, depends on model/data units (0.01 == 1cm for data in units meters).-->
+						<max_allowable_error>5000</max_allowable_error>
+					</RCNLCostTerm>
+				</RCNLCostTermSet>
+			</GCPTask>
+		</GCPTaskList>
+		<!--Initial value for resting spring length.-->
+		<initial_resting_spring_length>0.05</initial_resting_spring_length>
+		<!--Initial value for spring constant.-->
+		<initial_spring_constant>15000</initial_spring_constant>
+		<!--Initial value for damping factor.-->
+		<initial_damping_factor>1</initial_damping_factor>
+		<!--Initial value for dynamic friction coefficient.-->
+		<initial_dynamic_friction_coefficient>0.05</initial_dynamic_friction_coefficient>
+		<!--Initial value for viscous friction coefficient.-->
+		<initial_viscous_friction_coefficient>0</initial_viscous_friction_coefficient>
+		<!--Latching velocity used to calculate dynamic friction.-->
+		<latching_velocity>0.1</latching_velocity>
+		<!--*Optional* The minimum step of the least squares algorithm. Default is 1e-6 -->
+		<diff_min_change>0.01</diff_min_change>
+		<!--*Optional* The step tolerance determines when the lsqnonlin algorithm stops. The larger it is, the earlier the algorithm stops, but with lower accuracy. Default is 1e-16-->
+		<step_tolerance>0.0001</step_tolerance>
+		<!--*Optional* The optimality tolerance determines when the lsqnonlin algorithm stops. The larger it is, the earlier the algorithm stops, but with lower accuracy. Default is 1e-3-->
+		<optimality_tolerance>0.0001</optimality_tolerance>
+		<!--*Optional* The function tolerance determines when the lsqnonlin algorithm stops. The larger it is, the earlier the algorithm stops, but with lower accuracy. Default is 1e-6-->
+		<function_tolerance>0.0001</function_tolerance>
+		<!--*Optional* The number of allowed iterations of the fmincon optimization,  setting this lower can help cancel an optimization that won't converge. Default is 1e3-->
+		<max_iterations>20</max_iterations>
+		<!--*Optional* The number of allowed cost function calls for the fmincon optimization,  setting this lower can help cancel an optimization that won't converge.-->
+		<max_function_evaluations>300000</max_function_evaluations>
+	</GroundContactPersonalizationTool>
+</NMSMPipelineDocument>

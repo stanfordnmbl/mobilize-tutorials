@@ -1,0 +1,101 @@
+Spline nodes for foot 1: 23
+
+<a href = "matlab: helpview('optim','local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+
+lsqnonlin stopped because the final change in the sum of squares relative to 
+its initial value is less than the value of the <a href = "matlab: helpview('optim','function_tolerance_lsq','CSHelpWindow');">function tolerance</a>.
+
+<<a href = "matlab: createExitMsg({'optimlib:snls:Exit3basic','lsqnonlin'},{'optimlib:snls:Exit3detailed','1.000000e-06'},true,true);;">stopping criteria details</a>>
+
+                                            Norm of      First-order 
+ Iteration  Func-count      Resnorm            step       optimality
+     0        179           583.199                            4e+04
+     1        358           493.962              10         1.62e+04      
+     2        537           493.962              20         1.62e+04      
+     3        716           365.285               5         1.33e+04      
+     4        895           149.672              10          1.9e+04      
+     5       1074           149.672         19.1714          1.9e+04      
+     6       1253           86.8892         4.79286         4.02e+03      
+     7       1432           13.5252         9.58572         1.68e+04      
+     8       1611            7.2786         5.64522         2.56e+04      
+     9       1790            7.2786         15.0917         2.56e+04      
+    10       1969           7.05195         3.77292         2.39e+04      
+    11       2148           6.43855         0.94323         9.25e+03      
+    12       2327           6.37672         0.94323          6.6e+03      
+    13       2506           6.33954        0.235808         2.49e+03      
+    14       2685           6.32871        0.235808         2.12e+03      
+    15       2864           6.32714       0.0589519              812      
+    16       3043           6.32714        0.014738              812      
+    17       3222           6.32714      0.00368449              812      
+    18       3401           6.32714     0.000921123              812      
+    19       3580           6.32714     0.000230281              812      
+    20       3759           6.32714     5.75702e-05              812      
+
+<a href = "matlab: helpview('optim','local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+lsqnonlin stopped because the <a href = "matlab: helpview('optim','norm_current_step','CSHelpWindow');">size of the current step</a> is less than
+the value of the <a href = "matlab: helpview('optim','step_size_tol','CSHelpWindow');">step size tolerance</a>.
+
+<<a href = "matlab: createExitMsg({'optimlib:snls:Exit2basic','lsqnonlin'},{'optimlib:snls:Exit2detailed','5.757021e-05','1.000000e-04'},true,true);;">stopping criteria details</a>>
+
+                                            Norm of      First-order 
+ Iteration  Func-count      Resnorm            step       optimality
+     0        179           2294.34                         5.63e+03
+     1        358           382.045              10          1.7e+03      
+     2        537           382.045         15.3158          1.7e+03      
+     3        716           166.281         3.82894              962      
+     4        895           166.281         4.08999              962      
+     5       1074           92.8143          1.0225         1.08e+03      
+     6       1253           92.8143           2.045         1.08e+03      
+     7       1432           60.4143        0.511249              435      
+     8       1611           37.8613          1.0225         1.71e+03      
+     9       1790           23.0165          1.0225              922      
+    10       1969           12.4265           2.045              502      
+    11       2148           9.74912         4.07062              300      
+    12       2327           9.74912         8.17999              300      
+    13       2506           9.63376           2.045              100      
+    14       2685            9.6029         4.08999               90      
+    15       2864           9.55572          1.0225               46      
+    16       3043           9.50834          1.0225             45.5      
+    17       3222           9.48551          1.0225             29.7      
+    18       3401           9.46157          1.0225             16.8      
+    19       3580           9.44767          1.0225             18.8      
+    20       3759           9.44159          1.0225             12.1      
+    21       3938           9.44159        0.255625             12.1      
+
+<a href = "matlab: helpview('optim','solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the iteration limit,
+<a href = "matlab: helpview('optim','max_iter','CSHelpWindow');">options.MaxIterations</a> = 2.000000e+01.
+
+
+                                            Norm of      First-order 
+ Iteration  Func-count      Resnorm            step       optimality
+     0        181           131.757                         4.64e+03
+     1        362           43.2941              10              258      
+     2        543           43.2941         16.2999              258      
+     3        724           33.9684         4.07498              189      
+     4        905           26.7744         8.14996              171      
+     5       1086           23.3045         4.96945              241      
+     6       1267           22.4924         3.83262              148      
+     7       1448           22.3646         1.45629             54.6      
+     8       1629           22.3195         1.61406             19.1      
+     9       1810           22.3195        0.976456             19.1      
+    10       1991           22.2967        0.244114             8.16      
+    11       2172           22.2967        0.244114             8.16      
+    12       2353           22.2967       0.0610285             8.16      
+    13       2534           22.2967       0.0152571             8.16      
+    14       2715           22.2967      0.00381428             8.16      
+    15       2896           22.2967      0.00095357             8.16      
+    16       3077           22.2967     0.000238393             8.16      
+    17       3258           22.2967     5.95981e-05             8.16      
+
+<a href = "matlab: helpview('optim','local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+lsqnonlin stopped because the <a href = "matlab: helpview('optim','norm_current_step','CSHelpWindow');">size of the current step</a> is less than
+the value of the <a href = "matlab: helpview('optim','step_size_tol','CSHelpWindow');">step size tolerance</a>.
+
+<<a href = "matlab: createExitMsg({'optimlib:snls:Exit2basic','lsqnonlin'},{'optimlib:snls:Exit2detailed','5.959815e-05','1.000000e-04'},true,true);;">stopping criteria details</a>>
+Cleared memory from opensimPointKin mex file.
+Foot 1 electrical center shift: 
+   -0.0017         0    0.0133
+
+Ground Contact Personalization Runtime: 0.045293 Hours

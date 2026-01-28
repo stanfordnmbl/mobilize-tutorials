@@ -1,0 +1,53 @@
+<NMSMPipelineDocument Version="1.5.1">
+	<OptimalControlSolverSettings name="default">
+		<!--Settings for the GPOPS optimal control solver. Current options: GpopsSettings-->
+		<GpopsSettings>
+			<!--Type of derivative approximation. Possible values 'sparsFD' 'sparseBD' 'sparseCD' 'adigator'. Default 'sparseFD'-->
+			<setup_derivatives_supplier>sparseCD</setup_derivatives_supplier>
+			<!--Derivative order. Possible values 'first' 'second'. Default 'first'-->
+			<setup_derivatives_level>first</setup_derivatives_level>
+			<!--Determines how the dependencies are found. Possible values 'full' 'sparse' ' sparseNaN'. Default 'sparseNaN'-->
+			<setup_derivatives_dependencies>sparse</setup_derivatives_dependencies>
+			<!--Step size for finite difference. Default 1e-6-->
+			<setup_derivatives_step_size>1e-08</setup_derivatives_step_size>
+			<!--Specifies how the problem is scaled. Possible values 'none', 'automatic-bounds' 'automatic-guess' 'automatic-guessUpdate' 'automatic-hybrid' 'automatic-hybridUpdate' 'defined'. Default 'none'-->
+			<setup_scales_method>none</setup_scales_method>
+			<!--Version of the collocation to be used. Possible values 'RPM-Differentiation' 'RPM-Integration'. Default 'RPM-Differentiation'-->
+			<setup_method>RPM-Differentiation</setup_method>
+			<!--Mesh refinement method. Possible values 'none' 'hp-PattersonRao' 'hp-DarbyRao' 'hp-LiuRao' 'hp-LiuRao-Legendre'. Default 'hp-Patterson-Rao'-->
+			<setup_mesh_method>none</setup_mesh_method>
+			<!--Mesh tolerance. Positive number between 0 and 1. Default 10e-3-->
+			<setup_mesh_tolerance>1</setup_mesh_tolerance>
+			<!--Maximum number of mesh iterations. Non-negative integer. Default 10-->
+			<setup_mesh_max_iterations>0</setup_mesh_max_iterations>
+			<!--Minimum allowable number of collocation points. Must be an integer greater than 2. Default 3.-->
+			<setup_mesh_colpoints_min>3</setup_mesh_colpoints_min>
+			<!--Maximum allowable number of collocation points. Must be an integer greather than or equal to the minimum number of collocation points. Default 10-->
+			<setup_mesh_colpoints_max>10</setup_mesh_colpoints_max>
+			<!--Applies only to the 'hp-DarbyRao' method. Must be a real number larger than 1. Default 1.2-->
+			<setup_mesh_splitmult>1.2</setup_mesh_splitmult>
+			<!--Applies only to the 'hp-DarbyRao' method. Must be a real number larger than 1. Default 2-->
+			<setup_mesh_curveratio>2</setup_mesh_curveratio>
+			<!--Applies only to the 'hp-LiuRao' method. Must be a real number larger than 1. Default 1.2-->
+			<setup_mesh_R>1.2</setup_mesh_R>
+			<!--Applies only to the 'hp-LiuRao-Legendre' method. Must be a real number larger than 0. Default 0.5-->
+			<setup_mesh_sigma>0.5</setup_mesh_sigma>
+			<!--Number of intervals. Must be an integer. Default 6-->
+			<setup_mesh_phase_intervals>4</setup_mesh_phase_intervals>
+			<!--Number of collocation points per interval. Must be an integer. Default 10-->
+			<setup_mesh_phase_colpoints_per_Interval>25</setup_mesh_phase_colpoints_per_Interval>
+			<!--Type of nlp solver. Possible values 'snopt' 'ipopt'. Default 'ipopt'-->
+			<setup_nlp_solver>ipopt</setup_nlp_solver>
+			<!--Type of linear solver, applies to ipopt only. Possible values 'mumps' 'ma57'. Default 'ma57'-->
+			<setup_nlp_linear_solver>ma57</setup_nlp_linear_solver>
+			<!--nlp tolerance. Must be a positive real number. Default 10e-7-->
+			<setup_nlp_tolerance>1</setup_nlp_tolerance>
+			<!--nlp max iterations. Must be a positive integer. Default 2000-->
+			<setup_nlp_max_iterations>75</setup_nlp_max_iterations>
+			<!--Display level. Possible values 0 (suppresses all output), 1 (only mesh refinement output), 2 (iteration and mesh refinement output). Default 2-->
+			<setup_display_level>2</setup_display_level>
+			<!--Scale factor for the integral bounds relative to the initial guess. Must be a positive integer. Default 1-->
+			<integral_bound>1</integral_bound>
+		</GpopsSettings>
+	</OptimalControlSolverSettings>
+</NMSMPipelineDocument>
